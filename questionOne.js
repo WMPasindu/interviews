@@ -1,57 +1,52 @@
-// 1. Using arrow functions inconsistently for no reason
+// ******* QUESTION ********
+// This code implements part of our core algorithm for analyzing user spending patterns. 
+// While it seems to work functionally, 
+// we have concerns about its maintainability, readability, and performance. 
+// Can you review this code, identify potential issues, and suggest improvements using best practices of modern ES6
+
 let add = (a, b) => a + b;
 let multiply = function (a, b) { return a * b; };
 
-// 2. Nested ternary operators for simple logic
 const isEven = num => num % 2 === 0 ?
   true : num % 3 === 0 ?
     "divisible by 3" :
     false;
 
-// 3. Shadowing variables from outer scope with const
 const calculate = (array) => {
-  const array = []; // Shadowing original array variable with an empty one!
-  for (const item of array) { // Iterating over empty array!
-    array.push(item * 2); // Pushing to same empty array!
+  const array = [];
+  for (const item of array) {
+    array.push(item * 2);
   }
-  return array; // Empty array as a result!
+  return array;
 };
 
-// 4. Arrow function with implicit return for complex logic
 const findMax = (arr) => arr.reduce((max, curr) =>
-  curr > max ? curr : max, null); // Doesn't handle empty array!
+  curr > max ? curr : max, null);
 
-// 5. Magic numbers and implicit type coercion
 function average(values) {
-  const sum = values.reduce((acc, val) => acc + +val, 0); // Converting strings to numbers with +
-  return sum / values.length || 0; // Empty array check or zero?
+  const sum = values.reduce((acc, val) => acc + +val, 0);
+  return sum / values.length || 0;
 }
 
-// 6. Overly complex object destructuring for simple access
 const user = { name: "John", age: 30 };
-const { userName, userAge } = user; // Renamed and unnecessary destructuring!
+const { userName, userAge } = user;
 
-// 7. Callback functions without proper error handling
 const getData = (url, callback) => {
   fetch(url).then(response => response.json())
-    .then(callback) // No error handling for fetch or parsing!
+    .then(callback);
 };
 
-// 8. Mutating objects directly instead of using spread or immutable patterns
 const updateScore = (obj, score) => {
-  obj.score = score; // Directly modifies original object!
+  obj.score = score;
   return obj;
 };
 
-// 9. Unnecessary arrow function wrapping and nesting
-const logMessage = text => console.log(() => console.log(text)); // Nested and pointless!
+const logMessage = text => console.log(() => console.log(text));
 
-// 10. Mixing synchronous and asynchronous code without proper control flow
 async function main() {
   const data = await getData("https://example.com/data");
   const result = calculate(data);
   console.log(result);
-  // No wait for async data before logging!
 }
 
 main();
