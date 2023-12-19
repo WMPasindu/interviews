@@ -2,7 +2,7 @@
 // This code implements part of our core algorithm for analyzing user spending patterns. 
 // While it seems to work functionally, 
 // we have concerns about its maintainability, readability, and performance. 
-// Can you review this code, identify potential issues, and suggest improvements using best practices of modern ES6
+// Can you review this code, identify potential issues, and suggest improvements using best practices of modern ES6.
 
 let add = (a, b) => a + b;
 let multiply = function (a, b) { return a * b; };
